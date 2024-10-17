@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AppLeet - Sports Network</title>
+    <title>AppLeet - Redesigned Feed</title>
     <!-- Font Awesome for modern icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -31,13 +31,12 @@
             z-index: 100;
         }
 
-        /* Flex for Left and Right header sections */
-        header .left, header .right {
+        /* Left section (App name and nav links) */
+        .left {
             display: flex;
             align-items: center;
         }
 
-        /* App name with modern font and color */
         header h1 {
             margin: 0;
             font-size: 1.8rem;
@@ -45,7 +44,10 @@
             color: #61dafb;
         }
 
-        /* Navigation links */
+        header nav {
+            margin-left: 30px; /* Create space between AppLeet and the nav links */
+        }
+
         header nav a {
             color: white;
             margin-left: 20px;
@@ -59,6 +61,12 @@
             color: #61dafb;
         }
 
+        /* Right section (Search bar and icons) */
+        .right {
+            display: flex;
+            align-items: center;
+        }
+
         /* Search Bar */
         header input[type="text"] {
             padding: 7px 15px;
@@ -66,7 +74,7 @@
             border-radius: 20px;
             border: none;
             outline: none;
-            margin-right: 20px;
+            margin-right: 15px; /* Reduce margin for tighter alignment */
             transition: box-shadow 0.3s ease;
         }
 
@@ -84,7 +92,7 @@
             align-items: center;
             color: white;
             background-color: #61dafb;
-            margin-left: 15px;
+            margin-left: 10px; /* Reduced space between icons */
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
@@ -93,7 +101,7 @@
             background-color: #007bff;
         }
 
-        /* Responsive Layout for Main Section */
+        /* Main Container Layout */
         .main-container {
             display: grid;
             grid-template-columns: 1fr 2fr 1fr;
@@ -101,49 +109,24 @@
             padding: 20px;
         }
 
-        /* Sidebar Styles */
-        .sidebar {
+        /* Left Sidebar Placeholder */
+        .left-sidebar {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid black;
+        }
+
+        /* Main Feed Styling */
+        .main-feed {
             background-color: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .sidebar h3 {
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .sidebar ul li {
-            padding: 10px 0;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-        }
-
-        .sidebar ul li:hover {
-            color: #007bff;
-        }
-
-        /* Content / Feed Section */
-        .content {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .content h3 {
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-
-        .post {
+        .main-feed .post {
             margin-bottom: 20px;
             padding: 20px;
             background-color: #fff;
@@ -152,140 +135,230 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .post img {
-            max-width: 100%;
-            border-radius: 8px;
+        /* Right Sidebar - Communities and Footer */
+        .right-sidebar {
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Chat Sidebar */
-        .chat-sidebar {
+        .right-sidebar .popular-communities {
             background-color: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .chat-sidebar h3 {
             margin-bottom: 20px;
-            font-size: 1.2rem;
         }
 
-        .chat-item {
-            padding: 15px;
-            margin-bottom: 10px;
-            background-color: #f7f7f7;
+        .right-sidebar .popular-communities h3 {
+            margin-bottom: 15px;
+        }
+
+        .right-sidebar .popular-communities ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .right-sidebar .popular-communities ul li {
+            padding: 10px 0;
+            transition: color 0.3s ease;
+        }
+
+        .right-sidebar .popular-communities ul li:hover {
+            color: #007bff;
+        }
+
+        /* Footer Section */
+        .right-sidebar .footer-section {
+            background-color: white;
+            padding: 20px;
             border-radius: 8px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            transition: background-color 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
         }
 
-        .chat-item:hover {
+        .right-sidebar .footer-section a {
+            text-decoration: none;
+            color: #333;
+            margin-right: 15px;
+        }
+
+        .right-sidebar .footer-section a:hover {
+            color: #007bff;
+        }
+
+        .right-sidebar .footer-section img {
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* Messaging Popup */
+        .messaging-popup {
+            position: fixed;
+            bottom: 0;
+            right: 20px;
+            width: 300px;
+            background-color: white;
+            border-radius: 8px 8px 0 0;
+            box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .messaging-popup .message-header {
             background-color: #007bff;
             color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 8px 8px 0 0;
         }
 
-        /* Responsive Design for Tablet and Mobile */
-        @media (max-width: 1024px) {
-            .main-container {
-                grid-template-columns: 1fr;
-            }
-
-            .sidebar {
-                margin-bottom: 20px;
-            }
+        .messaging-popup .messages {
+            padding: 10px;
+            overflow-y: auto;
+            flex-grow: 1;
+            max-height: 200px;
         }
 
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            header .right {
-                margin-top: 10px;
-            }
-
-            header input[type="text"] {
-                margin-right: 0;
-            }
+        .messaging-popup .message-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
         }
 
+        .messaging-popup .message-input input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .messaging-popup .message-input button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Minimized Chat State */
+        .messaging-popup.minimized {
+            height: 40px;
+        }
+
+        .messaging-popup .minimize-chat {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="left">
-        <h1>AppLeet</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="opportunities.html">Opportunities</a>
-        </nav>
-    </div>
-    <div class="right">
-        <!-- Search Bar -->
-        <input type="text" placeholder="Search...">
-        
-        <!-- Profile Icon linked to Profile Page -->
-        <a href="profile.html" class="profile-icon">
-            <i class="fas fa-user"></i> <!-- Font Awesome user icon -->
-        </a>
-        
-        <!-- Settings Icon linked to Settings Page -->
-        <a href="settings.html" class="settings-icon">
-            <i class="fas fa-cog"></i> <!-- Font Awesome settings icon -->
-        </a>
-    </div>
-</header>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="left">
+            <h1>AppLeet</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="opportunities.html">Opportunities</a>
+            </nav>
+        </div>
+        <div class="right">
+            <!-- Search Bar -->
+            <input type="text" placeholder="Search...">
+            
+            <!-- Profile Icon linked to Profile Page -->
+            <a href="profile.html" class="profile-icon">
+                <i class="fas fa-user"></i> <!-- Font Awesome user icon -->
+            </a>
+            
+            <!-- Settings Icon linked to Settings Page -->
+            <a href="settings.html" class="settings-icon">
+                <i class="fas fa-cog"></i> <!-- Font Awesome settings icon -->
+            </a>
+        </div>
+    </header>
 
-<div class="main-container">
-    <!-- Left Sidebar -->
-    <div class="sidebar">
-        <h3>Menu</h3>
-        <ul>
-            <li>Recommended</li>
-            <li>Add</li>
-            <li>Premium</li>
-        </ul>
-    </div>
-
-    <!-- Main Feed -->
-    <div class="content">
-        <h3>Main Feed</h3>
-
-        <!-- Post 1 -->
-        <div class="post">
-            <h4>Video / Picture Post</h4>
-            <img src="https://via.placeholder.com/400" alt="Placeholder Image">
-            <p>This is a video/picture post description.</p>
+    <!-- Main Container for Layout -->
+    <div class="main-container">
+        <!-- Left Sidebar (COMING SOON) -->
+        <div class="left-sidebar">
+            <h2>COMING SOON</h2>
         </div>
 
-        <!-- Post 2 -->
-        <div class="post">
-            <h4>Text Post</h4>
-            <p>This is a sample text post from one of the users.</p>
+        <!-- Main Feed Section -->
+        <div class="main-feed">
+            <h3>Main Feed</h3>
+            <div class="post">
+                <h4>Video / Picture Post</h4>
+                <img src="https://via.placeholder.com/400" alt="Placeholder Image">
+                <p>This is a video/picture post description.</p>
+            </div>
+            <div class="post">
+                <h4>Text Post</h4>
+                <p>This is a sample text post from one of the users.</p>
+            </div>
+        </div>
+
+        <!-- Right Sidebar (Popular Communities and Footer Section) -->
+        <div class="right-sidebar">
+            <!-- Popular Communities -->
+            <div class="popular-communities">
+                <h3>Popular Communities</h3>
+                <ul>
+                    <li><a href="#">Community 1</a></li>
+                    <li><a href="#">Community 2</a></li>
+                    <li><a href="#">Community 3</a></li>
+                    <li><a href="#">See more</a></li>
+                </ul>
+            </div>
+
+            <!-- Footer Section -->
+            <div class="footer-section">
+                <a href="#">About</a>
+                <a href="#">Accessibility</a>
+                <a href="#">Help Center</a>
+                <a href="#">Privacy & Terms</a>
+                <a href="#">Ad Choices</a>
+                <a href="#">Business Services</a>
+                <a href="#">More</a>
+                <img src="https://via.placeholder.com/100x30" alt="AppLeet Logo">
+                <p>© AppLeet Corporation 2024</p>
+            </div>
         </div>
     </div>
 
-    <!-- Chat Sidebar -->
-    <div class="chat-sidebar">
-        <h3>Chats</h3>
-        <div class="chat-item">
-            <div class="profile-icon" style="margin-right: 10px;"></div>
-            <span>Chat 1</span>
+    <!-- Messaging Popup (Like LinkedIn) -->
+    <div class="messaging-popup">
+        <div class="message-header">
+            <span>Messaging</span>
+            <button class="minimize-chat">-</button>
         </div>
-        <div class="chat-item">
-            <div class="profile-icon" style="margin-right: 10px;"></div>
-            <span>Chat 2</span>
+        <div class="messages">
+            <p>No messages yet.</p>
         </div>
-        <div class="chat-item">
-            <div class="profile-icon" style="margin-right: 10px;"></div>
-            <span>Chat 3</span>
+        <div class="message-input">
+            <input type="text" placeholder="Type a message...">
+            <button>Send</button>
         </div>
     </div>
-</div>
+
+    <script>
+        // JavaScript for toggling the messaging popup (minimize/maximize)
+        const minimizeButton = document.querySelector('.minimize-chat');
+        const messagePopup = document.querySelector('.messaging-popup');
+
+        minimizeButton.addEventListener('click', () => {
+            messagePopup.classList.toggle('minimized');
+        });
+    </script>
 
 </body>
 </html>
