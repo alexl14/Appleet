@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppLeet - Sports Network</title>
+    <!-- Font Awesome for modern icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Modern Navbar */
+        header {
+            background-color: #20232a;
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        /* Flex for Left and Right header sections */
+        header .left, header .right {
+            display: flex;
+            align-items: center;
+        }
+
+        /* App name with modern font and color */
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #61dafb;
+        }
+
+        /* Navigation links */
+        header nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #61dafb;
+        }
+
+        /* Search Bar */
+        header input[type="text"] {
+            padding: 7px 15px;
+            font-size: 1rem;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            margin-right: 20px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        header input[type="text"]:focus {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Profile and Settings icons */
+        .profile-icon, .settings-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            background-color: #61dafb;
+            margin-left: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .profile-icon:hover, .settings-icon:hover {
+            background-color: #007bff;
+        }
+
+        /* Responsive Layout for Main Section */
+        .main-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 10px 0;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar ul li:hover {
+            color: #007bff;
+        }
+
+        /* Content / Feed Section */
+        .content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .post {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .post img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        /* Chat Sidebar */
+        .chat-sidebar {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-sidebar h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .chat-item {
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #f7f7f7;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .chat-item:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Responsive Design for Tablet and Mobile */
+        @media (max-width: 1024px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            header .right {
+                margin-top: 10px;
+            }
+
+            header input[type="text"] {
+                margin-right: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="left">
+        <h1>AppLeet</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="opportunities.html">Opportunities</a>
+        </nav>
+    </div>
+    <div class="right">
+        <!-- Search Bar -->
+        <input type="text" placeholder="Search...">
+        
+        <!-- Profile Icon linked to Profile Page -->
+        <a href="profile.html" class="profile-icon">
+            <i class="fas fa-user"></i> <!-- Font Awesome user icon -->
+        </a>
+        
+        <!-- Settings Icon linked to Settings Page -->
+        <a href="settings.html" class="settings-icon">
+            <i class="fas fa-cog"></i> <!-- Font Awesome settings icon -->
+        </a>
+    </div>
+</header>
+
+<div class="main-container">
+    <!-- Left Sidebar -->
+    <div class="sidebar">
+        <h3>Menu</h3>
+        <ul>
+            <li>Recommended</li>
+            <li>Add</li>
+            <li>Premium</li>
+        </ul>
+    </div>
+
+    <!-- Main Feed -->
+    <div class="content">
+        <h3>Main Feed</h3>
+
+        <!-- Post 1 -->
+        <div class="post">
+            <h4>Video / Picture Post</h4>
+            <img src="https://via.placeholder.com/400" alt="Placeholder Image">
+            <p>This is a video/picture post description.</p>
+        </div>
+
+        <!-- Post 2 -->
+        <div class="post">
+            <h4>Text Post</h4>
+            <p>This is a sample text post from one of the users.</p>
+        </div>
+    </div>
+
+    <!-- Chat Sidebar -->
+    <div class="chat-sidebar">
+        <h3>Chats</h3>
+        <div class="chat-item">
+            <div class="profile-icon" style="margin-right: 10px;"></div>
+            <span>Chat 1</span>
+        </div>
+        <div class="chat-item">
+            <div class="profile-icon" style="margin-right: 10px;"></div>
+            <span>Chat 2</span>
+        </div>
+        <div class="chat-item">
+            <div class="profile-icon" style="margin-right: 10px;"></div>
+            <span>Chat 3</span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

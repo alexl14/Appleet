@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opportunities Page - AppLeet</title>
+    <!-- Font Awesome for modern icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Modern Navbar */
+        header {
+            background-color: #20232a;
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #61dafb;
+        }
+
+        /* Main Content Container */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .filter-section input[type="text"], .filter-section select {
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            outline: none;
+        }
+
+        /* Opportunities Grid */
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* Opportunity Card */
+        .opportunity-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .opportunity-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .opportunity-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .opportunity-card p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* Apply Button */
+        .apply-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #61dafb;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .apply-btn:hover {
+            background-color: #007bff;
+        }
+
+        /* Back to Home Button */
+        .back-home-btn {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #61dafb;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-home-btn:hover {
+            background-color: #007bff;
+            transform: translateY(-3px); /* Add a lift on hover */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .filter-section {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .filter-section input[type="text"], .filter-section select {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>AppLeet - Opportunities</h1>
+</header>
+
+<div class="main-container">
+    
+    <!-- Filter Section -->
+    <div class="filter-section">
+        <input type="text" placeholder="Search for opportunities...">
+        <select>
+            <option value="">All Locations</option>
+            <option value="city1">City 1</option>
+            <option value="city2">City 2</option>
+        </select>
+        <select>
+            <option value="">All Categories</option>
+            <option value="job">Job</option>
+            <option value="training">Training</option>
+            <option value="collaboration">Collaboration</option>
+        </select>
+    </div>
+
+    <!-- Opportunities Grid -->
+    <div class="opportunity-grid">
+        <!-- Opportunity 1 -->
+        <div class="opportunity-card">
+            <h3>Football Coach Needed</h3>
+            <p>Looking for an experienced football coach to train our team for the upcoming season. Location: City 1.</p>
+            <a href="#" class="apply-btn">Apply Now</a>
+        </div>
+
+        <!-- Opportunity 2 -->
+        <div class="opportunity-card">
+            <h3>Personal Trainer Wanted</h3>
+            <p>Join our team of trainers at Fitness Gym to work with athletes and fitness enthusiasts. Location: City 2.</p>
+            <a href="#" class="apply-btn">Apply Now</a>
+        </div>
+
+        <!-- Opportunity 3 -->
+        <div class="opportunity-card">
+            <h3>Collaboration for Basketball Training Camp</h3>
+            <p>We are organizing a summer basketball training camp and looking for collaboration with local coaches.</p>
+            <a href="#" class="apply-btn">Apply Now</a>
+        </div>
+
+        <!-- Add more opportunities as needed -->
+    </div>
+
+    <!-- Back to Home Page Button -->
+    <a href="index.html" class="back-home-btn">
+        <i class="fas fa-arrow-left"></i> Back to Home Page
+    </a>
+
+</div>
+
+</body>
+</html>
